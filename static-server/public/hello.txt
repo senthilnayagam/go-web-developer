@@ -1,0 +1,4 @@
+total 0
+drwxr-xr-x  3 senthil  staff  102 Sep  6 10:53 .
+drwxr-xr-x  5 senthil  staff  170 Sep  6 10:53 ..
+-rw-r--r--  1 senthil  staff    0 Sep  6 10:53 hello.txt
