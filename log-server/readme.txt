@@ -1,12 +1,21 @@
+log-server
+
+log server will show the n lines of the log file specified at port p , head for top of the log, tail for the bottom of the log, and grep for search result
+
+uses exec to run tail, head or grep command from the operating system, should work on mac, and linux type operating systems
 
 
-tail server will show the last n lines of the log file specified at port p
 
 
-go run ts.go -l log/production.log 
+go run log-server.go -l log/production.log 
 
 
+http://localhost:8000/tail
+http://localhost:8000/head
 
+todo
+http://localhost:8000/grep/keyword
 
-ts -p 2000 -f ~/app/log/development.log -n 100
+planned
+log-server -p 2000 -f ~/app/log/development.log -n 100
 
