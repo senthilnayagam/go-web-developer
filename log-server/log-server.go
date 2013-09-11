@@ -28,15 +28,6 @@ func main() {
 	go signalCatcher()
   flag.Parse()
   fmt.Printf("Listening: %v Serving: %v\n", *localPort, *logpath)
-fmt.Printf("Tail: \n")
- tail()
-fmt.Printf("Head: \n") 
- head()
-search := "controller"
-fmt.Printf("grep: %s\n",search) 
- grep(search)
-
-
 
  http.HandleFunc("/", handler)
  http.HandleFunc("/tail", tailhandler)
