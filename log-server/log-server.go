@@ -5,7 +5,7 @@ import (
     "os/exec"
     "os/signal"
     "syscall"
-   // "net/http"
+    "net/http"
     "log"
     "flag"
     "fmt"
@@ -29,15 +29,43 @@ func main() {
   flag.Parse()
   fmt.Printf("Listening: %v Serving: %v\n", *localPort, *logpath)
 fmt.Printf("Tail: \n")
-tail()
+ tail()
 fmt.Printf("Head: \n") 
-head()
+ head()
 search := "controller"
 fmt.Printf("grep: %s\n",search) 
-grep(search)
+ grep(search)
+
+
+
+ http.HandleFunc("/", handler)
+ http.HandleFunc("/tail", tailhandler)
+ http.HandleFunc("/head", headhandler)
+ http.HandleFunc("/grep", grephandler)
+ err := http.ListenAndServe(":8000", nil)
+        if err != nil {
+                panic(err)
+        }
 }
 
-func tail(){
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "log server")
+}
+
+func tailhandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, tail())
+}
+
+func headhandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, head())
+}
+
+func grephandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, grep("controller"))
+}
+
+func tail() string{
     app := "tail"
     arg0 := *logpath //*lines
     cmd := exec.Command(app, arg0)
@@ -45,15 +73,15 @@ func tail(){
 
     if err != nil {
         println(err.Error())
-        return
+        return "error"
     }
-print(string(out))
+return string(out)
 
 }
 
 
 
-func head(){
+func head() string{
     app := "head"
     arg0 := *logpath //*lines
     cmd := exec.Command(app, arg0)
@@ -61,13 +89,13 @@ func head(){
 
     if err != nil {
         println(err.Error())
-        return
+        return "error"
     }
-print(string(out))	
+return string(out)
 }
 
 
-func grep(search string){
+func grep(search string) string{
     app := "grep"
     arg1 := *logpath //*lines
     arg0:= search
@@ -76,7 +104,7 @@ func grep(search string){
 
     if err != nil {
         println(err.Error())
-        return
+        return "error"
     }
-print(string(out))	
+return string(out)	
 }
