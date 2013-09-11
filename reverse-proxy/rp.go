@@ -8,7 +8,7 @@ import(
 )
  
 func main() {
-        remote, err := url.Parse("http://www.google.com")
+        remote, err := url.Parse("http://127.0.0.1:4567/")
         if err != nil {
                 panic(err)
         }
@@ -24,7 +24,6 @@ func main() {
 func handler(p *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
         return func(w http.ResponseWriter, r *http.Request) {
                 log.Println(r.URL)
-                w.Header().Set("X-Ben", "Rad")
                 p.ServeHTTP(w, r)
         }
 }
