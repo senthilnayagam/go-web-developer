@@ -19,3 +19,7 @@ http://localhost:8000/grep/keyword
 planned
 log-server -p 2000 -f ~/app/log/development.log -n 100
 
+load from a config file/default config file
+
+authentication?
+

@@ -10,3 +10,11 @@ default 3000 and folder is public
 go build ss.go
 
 ./ss -p
+
+
+
+todo
+
+file listing enable/disable via setting
+
+send content type
