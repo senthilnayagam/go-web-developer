@@ -26,3 +26,8 @@ Making 10000 requests to http://127.0.0.1:4567/hi
   10000 requests in 266.72ms, 1.23MB read
 Requests/sec:  37492.78
 Transfer/sec:      4.61MB
+
+
+
+
+
