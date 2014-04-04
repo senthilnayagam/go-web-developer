@@ -1,0 +1,17 @@
+
+
+completed
+mysql 
+postgres
+reorganize code to isolate mysql, postgres etc for general develoment purposes
+
+
+need to do for 
+
+redis
+elasticsearch
+queues
+rabbitmq
+
+
+

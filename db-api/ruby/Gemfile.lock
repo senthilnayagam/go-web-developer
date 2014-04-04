@@ -1,0 +1,32 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (1.2.0)
+    daemons (1.1.9)
+    eventmachine (1.0.3)
+    mysql2 (0.3.15)
+    oj (2.6.0)
+    pg (0.17.1)
+    rack (1.5.2)
+    rack-protection (1.5.2)
+      rack
+    sinatra (1.4.4)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
+    tilt (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  connection_pool
+  mysql2
+  oj
+  pg
+  sinatra
+  thin

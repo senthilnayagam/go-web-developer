@@ -1,0 +1,92 @@
+create db dbapi
+
+create table car and create number of records must have a column id as primary key
+
+search the key
+
+
+ab -n 10000 -c 50 http://127.0.0.1:4567/mysql2/car/10
+
+
+
+
+
+
+
+
+
+
+
+wrk -c 50 http://127.0.0.1:4567/mysql2/car/10
+Running 10s test @ http://127.0.0.1:4567/mysql2/car/10
+  2 threads and 50 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    20.58ms    4.79ms  40.98ms   69.03%
+    Req/Sec     1.24k   135.23     1.75k    70.19%
+  24511 requests in 10.00s, 4.84MB read
+Requests/sec:   2451.00
+Transfer/sec:    495.47KB
+
+
+
+
+ ab -n 10000 -c 50 http://127.0.0.1:4567/mysql2/bar/10
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        thin
+Server Hostname:        127.0.0.1
+Server Port:            4567
+
+Document Path:          /mysql2/bar/10
+Document Length:        43 bytes
+
+Concurrency Level:      50
+Time taken for tests:   3.247 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Non-2xx responses:      10008
+Total transferred:      2261808 bytes
+HTML transferred:       430344 bytes
+Requests per second:    3079.76 [#/sec] (mean)
+Time per request:       16.235 [ms] (mean)
+Time per request:       0.325 [ms] (mean, across all concurrent requests)
+Transfer rate:          680.26 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       2
+Processing:     2   16   5.4     15      61
+Waiting:        2   15   5.4     15      61
+Total:          2   16   5.4     16      62
+
+Percentage of the requests served within a certain time (ms)
+  50%     16
+  66%     17
+  75%     18
+  80%     19
+  90%     21
+  95%     23
+  98%     27
+  99%     31
+ 100%     62 (longest request)
+
+
+
+similarly pg runs on port 4568, please notice the table names , it is users(user possible is a keyword) and cars

@@ -1,0 +1,20 @@
+
+
+rvm install ruby-2.1.1
+
+bundle install
+
+
+mysql api
+~~~~~~~~~~
+mysql.server start
+
+ruby mysqlapi.rb
+# runs on 4567
+
+postgresql api
+~~~~~~~~~~~~~~~
+postgres -D /usr/local/var/postgres
+
+ruby pgapi.rb
+# runs on 4568

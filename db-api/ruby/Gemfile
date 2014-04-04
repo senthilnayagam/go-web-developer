@@ -1,0 +1,13 @@
+source 'https://rubygems.org'
+
+ruby '2.1.1'
+
+
+gem 'sinatra'
+gem 'mysql2'
+# gem 'json'
+gem 'oj'
+gem 'thin'
+gem 'connection_pool'
+# gem 'sinatra-logger'
+gem 'pg'
