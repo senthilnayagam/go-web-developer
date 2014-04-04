@@ -1,0 +1,16 @@
+
+
+brew install node
+
+install
+
+npm install -g mysql
+
+
+npm install  express
+
+
+npm install -g grunt-cli
+
+
+node mysql-api.js
