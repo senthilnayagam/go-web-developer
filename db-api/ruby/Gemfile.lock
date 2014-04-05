@@ -10,6 +10,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
+    redis (3.0.7)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -28,5 +29,6 @@ DEPENDENCIES
   mysql2
   oj
   pg
+  redis
   sinatra
   thin
