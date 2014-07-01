@@ -17,7 +17,7 @@ import (
 	"fmt"
     "strconv"
 	"sync"
-    "time"
+    // "time"
 	
 	"github.com/PuerkitoBio/goquery"
 	"encoding/base64"
@@ -140,7 +140,7 @@ absurl := toAbsUrl(url,url2)
 _ = absurl
 		result= result + "'" + absurl + "',\n"  // url2
 		global_url_queue.Add(absurl)
-		//qChan <- absurl // queue to channel
+		qChan <- absurl // queue to channel
 		
 	})
 	result = result + "],\n 'url':'" +url +  "','base64html':'" + str + "'}"
@@ -167,7 +167,7 @@ func worker(linkChan chan string,qChan chan string, wg *sync.WaitGroup) {
 
    for url := range linkChan {
      // Analyze value and do the job here
-	 time.Sleep(1 * time.Second)
+	 // time.Sleep(1 * time.Second)
 	 GetPage(url ,*mustcontain,qChan)
 	 		fmt.Printf("Done processing link #%s\n", url)
    }
@@ -192,7 +192,7 @@ func queuer(linkChan chan string, qChan chan string, wg *sync.WaitGroup) {
            if newurl == nil {
                fmt.Println("queue is empty")
    			// done.Done()
-                return
+               // return
            }
 		
    		// fmt.Println("recursion starts: " + newurl)
@@ -215,8 +215,8 @@ var mustcontain *string = flag.String("m", "railsfactory", "must contain string 
 var outputpath *string = flag.String("p", "output", "folder to save crawled files")
 
 func main() {
-    lCh := make(chan string) // initial crawl
-	qCh := make(chan string) // queuing channel
+    lCh := make(chan string,10) // initial crawl
+	qCh := make(chan string,10) // queuing channel
     wg := new(sync.WaitGroup)
 
 fmt.Println("start")
@@ -233,13 +233,13 @@ parallelCrawls := 10
     }
 	
 	lCh <- *starturl // crawl initialising by inserting in queue
-	
+
 	// a dedicated channel for queueing
 	for i := 0; i < parallelCrawls ; i++ {
     wg.Add(1)
     go queuer(lCh,qCh, wg)
 }
-	
+
 	
 	
 	
